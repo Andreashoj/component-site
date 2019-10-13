@@ -1,0 +1,143 @@
+a {
+  text-decoration: none;
+}
+
+a:active {
+  color: #53c1de;
+}
+
+a:visited {
+  color: #232b2b;
+}
+
+a:hover {
+  color: #53c1de;
+}
+
+h3 {
+  margin-top: 0;
+}
+
+pre {
+  background-color: #fafafa;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.App {
+  height: 100vh;
+  display: grid;
+  background-color: #fafafa;
+  grid-template-columns: 350px 100px 200px auto 200px 100px 350px;
+  grid-template-rows: 125px 1fr 1fr;
+  grid-template-areas:
+    "nav nav nav nav nav nav nav"
+    ". menu menu content . . ."
+    ". . . content . . .";
+}
+
+.site-nav {
+  grid-area: nav;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid rgb(238, 238, 238);
+}
+
+.site-logo {
+  margin-left: 350px;
+  height: 80px;
+  transition: all 0.3s ease;
+  transform-origin: 50% 50%;
+  cursor: pointer;
+}
+
+.site-logo:hover {
+  transform: scale(1.15) rotate(60deg);
+}
+
+.site-nav-link {
+  margin-right: 350px;
+  font-size: 1.5rem;
+  transition: all 0.2s ease;
+  padding: 16px 0;
+  border-bottom: 2px solid #3b444b;
+}
+
+.site-nav-link:hover {
+  border-bottom: 2px solid #53c1de;
+}
+
+.site-menu {
+  grid-area: menu;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-menu h3 {
+  color: #3b444b;
+}
+
+.site-menu a {
+  margin: 5px 0;
+  transition: all 0.2s ease;
+}
+
+.site-content {
+  grid-area: content;
+  background-color: white;
+  padding: 50px;
+}
+
+.snippet-sample-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.snippet-code {
+  width: 55%;
+}
+
+.snippet-output {
+  width: 40%;
+  margin-top: 15px;
+}
+
+.site-snippet-button {
+  background-color: #53c1de;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  transition: all 0.1s ease;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 50px;
+}
+
+.site-snippet-button:hover {
+  background-color: #8ae6ff;
+  color: white;
+}
+
+.site-snippet-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.site-snippet-modal {
+  min-width: 600px;
+  background-color: #fafafa;
+}
+
+.site-snippet-form input,
+select,
+option {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+}
