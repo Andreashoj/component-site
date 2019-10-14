@@ -8,7 +8,7 @@ const Navbar = () => {
         <img className="site-logo" src={Logo} alt="React-logo" />
       </div>
       <a className="site-nav-link" href="#">
-        Link
+        Log in
       </a>
     </nav>
   );

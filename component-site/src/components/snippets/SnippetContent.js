@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import SnippetCode from "./SnippetCode";
+import { FormContext } from "../../contexts/FormContext";
 
 const Navigation = () => {
+  const { snippets, setSnippets } = useContext(FormContext);
+
   return (
     <div className="snippet-container snippet-nav">
-      <h3>Navigation Component</h3>
-      <p>
-        The card component comprises several elements that you can mix and
-        match:
-      </p>
-      <SnippetCode />
+      {snippets.map(snippet => {
+        return (
+          <div>
+            <h3>{snippet.title}</h3>
+            <p>{snippet.description}</p>
+            <SnippetCode code={snippet.code} />
+          </div>
+        );
+      })}
     </div>
   );
 };

@@ -1,5 +1,6 @@
 a {
   text-decoration: none;
+  color: #3b444b;
 }
 
 a:active {
@@ -62,11 +63,6 @@ pre {
   font-size: 1.5rem;
   transition: all 0.2s ease;
   padding: 16px 0;
-  border-bottom: 2px solid #3b444b;
-}
-
-.site-nav-link:hover {
-  border-bottom: 2px solid #53c1de;
 }
 
 .site-menu {
@@ -89,6 +85,7 @@ pre {
   grid-area: content;
   background-color: white;
   padding: 50px;
+  min-width: 600px;
 }
 
 .snippet-sample-container {
@@ -135,9 +132,57 @@ pre {
 
 .site-snippet-form input,
 select,
-option {
+option,
+textarea {
   margin: 10px 0;
   padding: 10px;
   border-radius: 5px;
   border: none;
+  background-color: #fafafa;
+  border: 2px solid #ececec;
+}
+
+select {
+  margin-top: 50px;
+}
+
+textarea {
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+@media only screen and (max-width: 900px) {
+  .App {
+    height: 100vh;
+    display: grid;
+    background-color: #fafafa;
+    grid-template-columns: 15% 100px 200px auto 200px 100px 15%;
+    grid-template-rows: 125px 1fr 1fr;
+    grid-template-areas:
+      "nav nav nav nav nav nav nav"
+      ". content content content content content ."
+      ". content content content content content .";
+  }
+
+  .site-nav {
+    justify-content: space-around;
+  }
+
+  .site-nav img,
+  .site-nav a {
+    margin: 0;
+  }
+
+  .site-content {
+    min-width: 100px;
+  }
+
+  .snippet-sample-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .snippet-output {
+    order: -1;
+  }
 }

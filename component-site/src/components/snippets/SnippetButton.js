@@ -1,25 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import MicroModal from "react-micro-modal";
 import SnippetForm from "./SnippetForm";
 
 const SnippetButton = () => {
+  const [snippet, setSnippet] = useState([
+    { state: "useState()", jsx: "<button></button>" }
+  ]);
+  const [editMode, setEditMode] = useState(false);
+
   return (
-    <MicroModal
-      containerStyles={{ maxWidth: "800px", backgroundColor: "#fafafa" }}
-      trigger={handleOpen => (
-        <button className="site-snippet-button" onClick={handleOpen}>
-          New snippet
-        </button>
-      )}
-      children={handleClose => (
-        <div className="site-snippet-modal">
-          <SnippetForm />
-          <button className="site-snippet-button" onClick={handleClose}>
-            Close!
-          </button>
-        </div>
-      )}
-    />
+    <div>
+      <button
+        className="site-snippet-button"
+        onClick={() => setEditMode(!editMode)}
+      >
+        New snippet
+      </button>
+      {snippet.map(item => {
+        if (editMode) {
+          return <SnippetForm />;
+        }
+      })}
+    </div>
   );
 };
 
