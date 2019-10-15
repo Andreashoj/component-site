@@ -1,13 +1,16 @@
 import React, { useContext, useState } from "react";
 import { FormContext } from "../../contexts/FormContext";
+import uuid from "uuid/v1";
+import { useTransition, animated } from "react-spring";
 
 const SnippetForm = () => {
-  const { handleSnippet } = useContext(FormContext);
+  const { handleSnippet, snippets } = useContext(FormContext);
   const [formSnippet, setFormSnippet] = useState({
     category: "",
     title: "",
     description: "",
-    code: ""
+    code: "",
+    id: uuid()
   });
 
   const handleSubmit = e => {
@@ -40,7 +43,10 @@ const SnippetForm = () => {
         placeholder="Enter Description"
         name="description"
         onChange={e =>
-          setFormSnippet({ ...formSnippet, description: e.target.value })
+          setFormSnippet({
+            ...formSnippet,
+            description: e.target.value
+          })
         }
       />
       <textarea

@@ -1,24 +1,31 @@
 import React, { useState } from "react";
-import MicroModal from "react-micro-modal";
 import SnippetForm from "./SnippetForm";
+import { useTransition, animated } from "react-spring";
 
 const SnippetButton = () => {
   const [snippet, setSnippet] = useState([
     { state: "useState()", jsx: "<button></button>" }
   ]);
-  const [editMode, setEditMode] = useState(false);
+
+  const [show, setShow] = useState(false);
+  const transitions = useTransition(show, null, {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 }
+  });
 
   return (
     <div>
-      <button
-        className="site-snippet-button"
-        onClick={() => setEditMode(!editMode)}
-      >
+      <button className="site-snippet-button" onClick={() => setShow(!show)}>
         New snippet
       </button>
-      {snippet.map(item => {
-        if (editMode) {
-          return <SnippetForm />;
+      {transitions.map(({ item, key, props }) => {
+        if (show) {
+          return (
+            <animated.div key={key} style={props}>
+              <SnippetForm />
+            </animated.div>
+          );
         }
       })}
     </div>

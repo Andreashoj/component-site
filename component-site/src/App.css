@@ -27,7 +27,7 @@ pre {
 }
 
 .App {
-  height: 100vh;
+  min-height: 100vh;
   display: grid;
   background-color: #fafafa;
   grid-template-columns: 350px 100px 200px auto 200px 100px 350px;
@@ -95,6 +95,7 @@ pre {
 
 .snippet-code {
   width: 55%;
+  white-space: pre-wrap;
 }
 
 .snippet-output {
@@ -113,6 +114,10 @@ pre {
   font-weight: 500;
   cursor: pointer;
   margin-top: 50px;
+}
+
+.snippet-content {
+  margin-top: 40px;
 }
 
 .site-snippet-button:hover {

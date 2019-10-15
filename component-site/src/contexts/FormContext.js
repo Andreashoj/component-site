@@ -1,4 +1,5 @@
 import React, { useState, createContext } from "react";
+import uuid from "uuid/v1";
 
 export const FormContext = createContext();
 
@@ -12,7 +13,8 @@ const FormContextProvider = props => {
       code: `<body> 
       <div class="container"> 
       </div>
-  </body>`
+  </body>`,
+      id: uuid()
     }
   ]);
 
