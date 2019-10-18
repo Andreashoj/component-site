@@ -3,33 +3,23 @@ import { FormContext } from "../../contexts/FormContext";
 import uuid from "uuid/v1";
 import { useTransition, animated } from "react-spring";
 
-const SnippetForm = () => {
+const SnippetForm = ({ setForm }) => {
   const { handleSnippet, snippets } = useContext(FormContext);
   const [formSnippet, setFormSnippet] = useState({
-    category: "",
     title: "",
     description: "",
-    code: "",
+    code: [{ lang: "", content: "", id: uuid() }],
     id: uuid()
   });
 
   const handleSubmit = e => {
     e.preventDefault();
     handleSnippet(formSnippet);
+    setForm();
   };
 
   return (
     <form className="site-snippet-form" onSubmit={e => handleSubmit(e)}>
-      <select
-        id="mySelect"
-        onChange={e =>
-          setFormSnippet({ ...formSnippet, category: e.target.value })
-        }
-      >
-        <option>Navigation</option>
-        <option>Button</option>
-        <option>Layout</option>
-      </select>
       <input
         type="text"
         placeholder="Enter Title"
@@ -49,19 +39,39 @@ const SnippetForm = () => {
           })
         }
       />
+      <input
+        id="mySelect"
+        placeholder="Enter programming language (Javascript, C++, etc..)"
+        name="language"
+        onChange={e => handleTextareaChange(e)}
+      />
+
+      {/* TEXT AREA TILFØJER OBJEKTER I STEDET FOR AT OPDATERE */}
       <textarea
         name="code"
         placeholder="Enter Code"
         cols="30"
         rows="10"
-        onChange={e => setFormSnippet({ ...formSnippet, code: e.target.value })}
+        onChange={e =>
+          setFormSnippet({
+            ...formSnippet
+          })
+        }
       ></textarea>
-      <input
-        type="submit"
-        placeholder="Submit snippet"
-        name="submit"
-        value="Submit snippet"
-      />
+      <div>
+        <input
+          type="submit"
+          placeholder="Submit snippet"
+          name="submit"
+          value="Submit snippet"
+        />
+        <input
+          type="submit"
+          placeholder="Submit snippet"
+          name="submit"
+          value="Submit snippet"
+        />
+      </div>
     </form>
   );
 };

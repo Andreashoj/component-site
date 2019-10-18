@@ -3,30 +3,28 @@ import SnippetForm from "./SnippetForm";
 import { useTransition, animated } from "react-spring";
 
 const SnippetButton = () => {
-  const [snippet, setSnippet] = useState([
-    { state: "useState()", jsx: "<button></button>" }
-  ]);
-
   const [show, setShow] = useState(false);
   const transitions = useTransition(show, null, {
-    from: { opacity: 0 },
-    enter: { opacity: 1 },
-    leave: { opacity: 0 }
+    from: { transform: "translate3d(0,40px,0)", opacity: 0 },
+    enter: { transform: "translate3d(0,0px,0)", opacity: 1 },
+    leave: { transform: "translate3d(0,40px,0)", opacity: 0 }
   });
+
+  const setForm = () => {
+    setShow(!show);
+  };
 
   return (
     <div>
-      <button className="site-snippet-button" onClick={() => setShow(!show)}>
+      <button className="site-snippet-button" onClick={setForm}>
         New snippet
       </button>
       {transitions.map(({ item, key, props }) => {
-        if (show) {
-          return (
-            <animated.div key={key} style={props}>
-              <SnippetForm />
-            </animated.div>
-          );
-        }
+        return item ? (
+          <animated.div key={key} style={props}>
+            <SnippetForm setForm={setForm} />
+          </animated.div>
+        ) : null;
       })}
     </div>
   );

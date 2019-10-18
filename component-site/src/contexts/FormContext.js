@@ -6,14 +6,29 @@ export const FormContext = createContext();
 const FormContextProvider = props => {
   const [snippets, setSnippets] = useState([
     {
-      category: "navigation",
       title: "Navigation Component",
       description:
         "A very nice navigation component that can be used across multiple sites",
-      code: `<body> 
-      <div class="container"> 
-      </div>
-  </body>`,
+      code: [
+        {
+          lang: "Javascript",
+          content: `const transitions = useTransition(show, null, {
+        from: { transform: "translate3d(0,-40px,0)", opacity: 0 },
+        enter: { transform: "translate3d(0,0px,0)", opacity: 1 },
+        leave: { transform: "translate3d(0,40px,0)", opacity: 0 }
+      });`,
+          id: uuid()
+        },
+        {
+          lang: "Javascript",
+          content: `const transitions = useTransition(show, null, {
+        from: { transform: "translate3d(0,-40px,0)", opacity: 0 },
+        enter: { transform: "translate3d(0,0px,0)", opacity: 1 },
+        leave: { transform: "translate3d(0,40px,0)", opacity: 0 }
+      });`,
+          id: uuid()
+        }
+      ],
       id: uuid()
     }
   ]);

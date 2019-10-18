@@ -1,18 +1,22 @@
 import React from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
-import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { dracula } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 const SnippetCode = ({ code }) => {
-  return (
-    <div className="snippet-sample-container">
-      <SyntaxHighlighter language="html" style={docco} className="snippet-code">
-        {code}
-      </SyntaxHighlighter>
-      <div className="snippet-output">
-        <button>Look at me pretty button</button>
+  return code.map(snippet => {
+    return (
+      <div>
+        <span className="lang-icon">{snippet.lang}</span>
+        <SyntaxHighlighter
+          language={snippet.lang}
+          style={dracula}
+          className="snippet-code"
+        >
+          {snippet.content}
+        </SyntaxHighlighter>
       </div>
-    </div>
-  );
+    );
+  });
 };
 
 export default SnippetCode;

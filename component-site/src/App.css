@@ -20,7 +20,7 @@ h3 {
 }
 
 pre {
-  background-color: #fafafa;
+  background-color: #292a2b;
   width: 100%;
   padding: 10px;
   border-radius: 5px;
@@ -30,24 +30,32 @@ pre {
   min-height: 100vh;
   display: grid;
   background-color: #fafafa;
-  grid-template-columns: 350px 100px 200px auto 200px 100px 350px;
+  grid-template-columns: 0.5fr 100px 200px 60% 200px 100px 0.5fr;
   grid-template-rows: 125px 1fr 1fr;
   grid-template-areas:
-    "nav nav nav nav nav nav nav"
+    "nav1 nav2 nav3 nav4 nav5 nav6 nav7"
     ". menu menu content . . ."
     ". . . content . . .";
 }
 
 .site-nav {
-  grid-area: nav;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  grid-column: nav1 / nav7;
+  display: grid;
+  background-color: #fafafa;
+  grid-template-columns: 0.5fr 100px 200px 60% 200px 100px 0.5fr;
+  grid-template-areas: "nav1 nav2 nav3 nav4 nav5 nav6 nav7";
   border-bottom: 2px solid rgb(238, 238, 238);
 }
 
+.site-nav-content {
+  grid-column: nav2 / nav6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .site-logo {
-  margin-left: 350px;
+  grid-area: nav;
   height: 80px;
   transition: all 0.3s ease;
   transform-origin: 50% 50%;
@@ -85,7 +93,6 @@ pre {
   grid-area: content;
   background-color: white;
   padding: 50px;
-  min-width: 600px;
 }
 
 .snippet-sample-container {
@@ -93,13 +100,17 @@ pre {
   justify-content: space-between;
 }
 
+.snippet-sample-container p {
+  width: 35%;
+  margin-top: 50px;
+}
+
 .snippet-code {
-  width: 55%;
   white-space: pre-wrap;
 }
 
 .snippet-output {
-  width: 40%;
+  width: 30%;
   margin-top: 15px;
 }
 
@@ -128,6 +139,7 @@ pre {
 .site-snippet-form {
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
 }
 
 .site-snippet-modal {
@@ -154,6 +166,24 @@ select {
 textarea {
   font-family: inherit;
   font-size: 1rem;
+}
+
+.code-samples {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+.code-samples div {
+  margin-top: 20px;
+}
+
+.lang-icon {
+  padding: 10px 15px;
+  background-color: #282a36;
+  color: white;
+  border-radius: 5px;
+  margin-top: 10px;
 }
 
 @media only screen and (max-width: 900px) {
