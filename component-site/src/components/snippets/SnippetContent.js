@@ -15,7 +15,7 @@ const SnippetContent = () => {
 
             <div className="snippet-sample-container">
               <div className="code-samples">
-                <SnippetCode code={snippet.code} id={snippet.id} />
+                <SnippetCode code={snippet.code} />
               </div>
               <p>Code will be reviewed soon.</p>
             </div>

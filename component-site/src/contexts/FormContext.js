@@ -20,12 +20,9 @@ const FormContextProvider = props => {
           id: uuid()
         },
         {
-          lang: "Javascript",
-          content: `const transitions = useTransition(show, null, {
-        from: { transform: "translate3d(0,-40px,0)", opacity: 0 },
-        enter: { transform: "translate3d(0,0px,0)", opacity: 1 },
-        leave: { transform: "translate3d(0,40px,0)", opacity: 0 }
-      });`,
+          lang: "HTML",
+          content: `<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#000000" />`,
           id: uuid()
         }
       ],
